@@ -78,23 +78,33 @@ left: 550px;
 
 
 
+float: right;
+}
+
+.button5 {
+position: absolute;
+top: 150px;
+left: 60px;
+}
+.error {
+position: absolute;
+top: 190px;
+left: 10px;
+font-weight:bold;
+}
+
+.block3 {
+position: absolute; 
+    left: 320px;
+top: 50px;
+
+text-align: -webkit-center;
+width: 950px;
+    
+height: 450px;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  float: right;
+  
+  background-repeat: no-repeat;
+  float: center;
 }
