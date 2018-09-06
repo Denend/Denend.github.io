@@ -43,6 +43,7 @@ var gap = 150;
 //var result = document.getElementById("result");
 var count = 0;
 var counter_time = 0;
+var AnimSpeed = 1;
 //Позиция юры
 // при нажатии на кнопку
 //var x = document.getElementsByTagName("BODY")[0];
@@ -108,6 +109,9 @@ var id = setInterval("time_count()",1000);
 
 function time_count(){
 counter_time++
+if(counter_time ==30){
+  AnimSpeed++
+};
 
 };
 
@@ -124,15 +128,15 @@ context.drawImage(kosoj_bot, kosyaki[i].x, kosyaki[i].y + kosoj_up.height + gap)
 
 
 context.drawImage(shishlo, shyshki[i].x, shyshki[i].y);
-if(counter_time < 30){
-shyshki[i].x = shyshki[i].x - 1;
-kosyaki[i].x = kosyaki[i].x - 1;
-} else {
+//if(counter_time < 10){
+shyshki[i].x = shyshki[i].x - AnimSpeed;
+kosyaki[i].x = kosyaki[i].x - AnimSpeed;
+/*} else {
 shyshki[i].x = shyshki[i].x - 2;
 kosyaki[i].x = kosyaki[i].x - 2;
-};
+};  */
 
-if(kosyaki[i].x==80 ||kosyaki[i].x==81){
+if(AnimSpeed == 1 && kosyaki[i].x==80){
   kosyaki.push({
     x:canvas.width,
     y:Math.floor(Math.random()*kosoj_up.height) - kosoj_up.height
@@ -142,6 +146,17 @@ if(kosyaki[i].x==80 ||kosyaki[i].x==81){
     y: Math.floor(Math.random()*(canvas.width - 50))
 
   })
+} else if (AnimSpeed == 2 && (kosyaki[i].x==81 || kosyaki[i].x==80)){
+  kosyaki.push({
+    x:canvas.width,
+    y:Math.floor(Math.random()*kosoj_up.height) - kosoj_up.height
+  })
+  shyshki.push({
+    x: canvas.width + 110,
+    y: Math.floor(Math.random()*(canvas.width - 50))
+
+  })
+
 };
 
 if(xPoz + ura.width >= shyshki[i].x && xPoz <= shyshki[i].x + shishlo.width && yPoz + ura.height/2 <=shyshki[i].y + shishlo.height && yPoz + ura.height/2 >= shyshki[i].y) {
