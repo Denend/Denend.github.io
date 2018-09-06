@@ -45,11 +45,16 @@ var count = 0;
 var counter_time = 0;
 //Позиция птички ли юры
 // при нажатии на кнопку
-document.addEventListener("keydown", moveUp)
+//var x = document.getElementsByTagName("BODY")[0];
+//x.onclick = moveUp();
+document.addEventListener("keydown", moveUp);
+//document.onclick =
+document.addEventListener("click", moveUp);
 function moveUp(){
 yPoz -= 35;
 fly.play();
 };
+
 //блоки создание
 var shyshki = [];
 shyshki[0] = {
