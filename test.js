@@ -43,7 +43,7 @@ var gap = 150;
 //var result = document.getElementById("result");
 var count = 0;
 var counter_time = 0;
-//Позиция птички ли юры
+//Позиция юры
 // при нажатии на кнопку
 //var x = document.getElementsByTagName("BODY")[0];
 //x.onclick = moveUp();
@@ -132,7 +132,7 @@ shyshki[i].x = shyshki[i].x - 2;
 kosyaki[i].x = kosyaki[i].x - 2;
 };
 
-if(kosyaki[i].x==80){
+if(kosyaki[i].x==80 ||kosyaki[i].x==81){
   kosyaki.push({
     x:canvas.width,
     y:Math.floor(Math.random()*kosoj_up.height) - kosoj_up.height
@@ -143,10 +143,7 @@ if(kosyaki[i].x==80){
 
   })
 };
-/*if(xPoz == trubu[i].x){
-  count += 1;
-  result.innerHTML = "Result = " + count;
-} */
+
 if(xPoz + ura.width >= shyshki[i].x && xPoz <= shyshki[i].x + shishlo.width && yPoz + ura.height/2 <=shyshki[i].y + shishlo.height && yPoz + ura.height/2 >= shyshki[i].y) {
   count += 1;
   //result.innerHTML = "Result = " + count;
@@ -155,7 +152,8 @@ if(xPoz + ura.width >= shyshki[i].x && xPoz <= shyshki[i].x + shishlo.width && y
 
 }
 if(xPoz + ura.width - 5>= kosyaki[i].x + 5 && xPoz <= kosyaki[i].x + kosoj_up.width - 5 && (yPoz<= kosyaki[i].y +kosoj_up.height||yPoz + ura.height - 5>=kosyaki[i].y + kosoj_up.height + gap) || yPoz<=-5 || yPoz + ura.height >= canvas.height - fg.height + 10){
-location.reload();   // перезагружает всю страницу ваще
+//location.reload();
+history.go(0)   // перезагружает всю страницу ваще
 }
 };
 
