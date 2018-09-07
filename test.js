@@ -48,9 +48,11 @@ var AnimSpeed = 1;
 // при нажатии на кнопку
 //var x = document.getElementsByTagName("BODY")[0];
 //x.onclick = moveUp();
+document.addEventListener('DOMContentLoaded', function(){
 document.addEventListener("keydown", moveUp);
 //document.onclick =
-document.addEventListener("click", moveUp);
+document.addEventListener("touchend", moveUp);
+});
 function moveUp(){
 yPoz -= 35;
 fly.play();
