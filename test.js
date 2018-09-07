@@ -40,17 +40,14 @@ fly.src = "audio/fly.mp3";
 score_aud.src = "audio/score.mp3";
 //score1_aud.src = "audio/score1.mp3";
 var gap = 150;
-//var result = document.getElementById("result");
+var result = document.getElementById("result");
 var count = 0;
 var counter_time = 0;
 var AnimSpeed = 1;
 //Позиция юры
 // при нажатии на кнопку
-//var x = document.getElementsByTagName("BODY")[0];
-//x.onclick = moveUp();
 document.addEventListener('DOMContentLoaded', function(){
 document.addEventListener("keydown", moveUp);
-//document.onclick =
 document.addEventListener("touchend", moveUp);
 });
 function moveUp(){
@@ -127,17 +124,10 @@ context.drawImage(kosoj_up, kosyaki[i].x , kosyaki[i].y );
 // высота 272
 context.drawImage(kosoj_bot, kosyaki[i].x, kosyaki[i].y + kosoj_up.height + gap);
 // высота 378 и они неизменные просто указываются координаты а остаток обрезается канвасом
-
-
 context.drawImage(shishlo, shyshki[i].x, shyshki[i].y);
 //if(counter_time < 10){
 shyshki[i].x = shyshki[i].x - AnimSpeed;
 kosyaki[i].x = kosyaki[i].x - AnimSpeed;
-/*} else {
-shyshki[i].x = shyshki[i].x - 2;
-kosyaki[i].x = kosyaki[i].x - 2;
-};  */
-
 if(AnimSpeed == 1 && kosyaki[i].x==80){
   kosyaki.push({
     x:canvas.width,
@@ -170,7 +160,20 @@ if(xPoz + ura.width >= shyshki[i].x && xPoz <= shyshki[i].x + shishlo.width && y
 }
 if(xPoz + ura.width - 5>= kosyaki[i].x + 5 && xPoz <= kosyaki[i].x + kosoj_up.width - 5 && (yPoz<= kosyaki[i].y +kosoj_up.height||yPoz + ura.height - 5>=kosyaki[i].y + kosoj_up.height + gap) || yPoz<=-5 || yPoz + ura.height >= canvas.height - fg.height + 10){
 //location.reload();
-history.go(0)   // перезагружает всю страницу ваще
+result.innerHTML = "Previous result = " + count;
+
+counter_time = 0
+//AnimSpeed = 1;
+count = 0;
+kosyaki[i].x = kosyaki[0].x;
+shyshki[i].x = shyshki[0].x;
+xPoz = 10;
+yPoz = 150;
+
+
+
+//history.go(0)   // перезагружает всю страницу ваще
+
 }
 };
 
