@@ -163,7 +163,7 @@ if(xPoz + ura.width - 5>= kosyaki[i].x + 5 && xPoz <= kosyaki[i].x + kosoj_up.wi
 result.innerHTML = "Previous result = " + count;
 
 counter_time = 0
-//AnimSpeed = 1;
+AnimSpeed = 1;
 count = 0;
 kosyaki[i].x = kosyaki[0].x;
 shyshki[i].x = shyshki[0].x;
