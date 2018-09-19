@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Register</h1>
+<div class="container">
+  <form action="" role="form" class="form-horizontal"  onsubmit="return validateUserName()" method="POST">
+    <div class="form-group" id="divEmail">
+      <label class="control-label col-md-2">Username</label>
+    <div class="col-md-10">
+      <input  class="form-control" name="username" id="mail" placeholder="введи эту парашу">
+    </div>
+  </div>
+    <div class="form-group" id="divPass">
+      <label for="pass" class="control-label col-md-2">Pass</label>
+      <div class="col-md-10">
+       <input type="password" name="password" class="form-control " id="pass" placeholder ="ебни без рук">
+     </div>
+    </div>
+      <div class="form-group" id="divPass1">
+        <label for="password" class="control-label col-md-2">Repeat pass</label>
+        <div class="col-md-10">
+         <input type="password" class="form-control " id="pass1" placeholder ="ну еще разок">
+       </div>
+     </div>
+     <div class="form-group">
+    <div class="col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10">
+      <div class="alert alert-danger collapse" role="alert" id="alert_error">
+      какое то поле пустое или пароли не совпадают
+      </div>
+      <div class="checkbox">
+        <label><input type="checkbox" >Безопасность on</label>
+      </div>
+    </div>
+  </div>
+     <div class="form-group">
+       <div class="col-md-offset-2 col-md-10 col-lg-offset-2 col-lg-10">
+         <button type="submit" class="btn btn-primary">Зарегаца</button>
+       </div>
+      </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+body {
+  border: 1px solid black;
+  -webkit-animation: mymove 5s infinite; /* Safari 4.0 - 8.0 */
+  animation: mymove 5s infinite;
+};
+@-webkit-keyframes mymove {
+50% {border-bottom-left-radius: 150px;}
+}
+
+@keyframes mymove {
+50% {border-bottom-left-radius: 150px;}
+}
