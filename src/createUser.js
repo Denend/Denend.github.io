@@ -85,6 +85,8 @@ class CreateUser extends Component{
     }
   }
   sendRegistration = (e) => {
+    let errorSpan = document.getElementById("errorSpan")
+    errorSpan.style.visibility="hidden";
     e.preventDefault();
     if(this.validateName()===true&&this.validateMail()===true&&this.validateFname()===true&&this.validatePass()===true&&this.validatePass1()===true){
       this.props.createDamnUser({
@@ -93,15 +95,16 @@ class CreateUser extends Component{
           familyName: this.state.familyName,
           name:this.state.name,
           password:this.state.password,
-        }
-      }).catch(err=>alert(err),
-          this.setState({error:true})
-        ).then(
+        },
+      }).catch(err=>
+          {
+            alert(err)
+            this.setState({error:true})
+          }).then(
             response=> {
                 if(!this.state.error){
                   console.log(response.data.CreateUser.uuid)
                   this.setState({signUpDone:true})
-                  this.props.history.push('/Login')
                 }
             },
           );

@@ -61,6 +61,16 @@ width:100%;
     margin-top: 100%;
     display: flex;
   }
+
+  #checkBoxContainer {
+    display:flex none;
+  }
+  #checkBoxContainer > input{
+    float:right;
+    position: absolute;
+    right:-40px;
+  }
+
 }
 
 li a {
@@ -116,24 +126,32 @@ button:hover{
     color: red;
     padding-left: 5%;
   }
+  .mainPageBackground {
+    background-image: url(https://images.freecreatives.com/wp-content/uploads/2015/03/Huge-Backgrounds-17.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    height:100vh;
+  }
 
   #sidebar{
-    overflow-x: hidden;
-    width: 50%;
+    overflow: hidden;
+    width: 60%;
     border-left: 1px solid black;
     position: absolute;
     right:0;
-    margin-top:170%;
+    margin-top:200%;
     margin-bottom: 30px;
   }
 
   #receiptDetails {
     visibility: hidden;
-    width: 50%;
+    width: 60%%;
     border-right: 1px solid black;
     position: absolute;
     left:0;
-    margin-top:170%;
+    margin-top:200%;
     overflow: hidden;
 
   }

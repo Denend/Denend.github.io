@@ -6,7 +6,8 @@ class ConfirmUs extends Component {
   constructor(props){
     super(props);
     this.state={
-      code: ""
+      code: "",
+      error:false
     }
   }
   validateCode=(e)=>{
@@ -19,15 +20,22 @@ class ConfirmUs extends Component {
     }
   }
   sendCode=(e)=>{
+    this.setState({error:false})
     e.preventDefault();
     if(this.validateCode()===true){
-      alert(this.props.emailForCCode);
       this.props.submitMutation({
         variables: {
           email: this.props.emailForCCode,
           confirmationCode: this.state.code,
         }
-      }).then(console.log(this.props));
+      }).catch(err=>{
+          alert(err)
+          this.setState({error:true})
+      }).then(res=>{
+        if(!this.state.error){
+          this.props.history.push("/Login");
+        }
+      });
     }
   }
   render(){
@@ -38,6 +46,7 @@ class ConfirmUs extends Component {
             <span>Massage with a confirmation code was sent to your e-mail</span>
             <br/>
             <input id="inputCCode"placeholder = "Enter your confirmation code" type='text' onChange = {(e) => this.setState({code: e.target.value})} onMouseOut = {this.validateCode}></input>
+            <br/>
             <button id='submitCodeForm' >Submit</button>
           </div>
         </form>
