@@ -1,0 +1,250 @@
+html {
+
+}
+body,h1,h2 {
+
+   overflow: hidden;
+
+}
+nav {
+   display: flex;
+   align-items: center;
+   background-color: #333;
+}
+nav h2 {
+  flex: 0.5;
+  color: white;
+  text-align: center;
+
+}
+.navBar {
+  flex:0.5;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.navBar li{
+
+width:100%;
+
+}
+@media all and (max-width: 500px) {
+  nav {
+    flex-direction: column;
+  }
+  #lastBarLi{
+    margin-left: 9%
+  }
+  .navBar {
+    flex-direction: column;
+  }
+
+  #receiptDetails{
+    flex:0.5;
+    min-height: 100%;
+    height: auto;
+    height: 100%;
+  }
+  #sidebar {
+    flex:0.5;
+    min-height: 100%;
+    height: auto ;
+    height: 100%;
+  }
+  #allReceiptsComp{
+    margin-top: 100%;
+    display: flex;
+  }
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover {
+  color: yellow;
+}
+li:nth-child(4) a{
+  margin-right: 20px;
+
+}
+.SignUpForm{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+input:hover {
+  background-color: lightblue;
+}
+button {
+	background: #E27575;
+	border: none;
+	padding: 10px 25px 10px 25px;
+	color: #FFF;
+	box-shadow: 1px 1px 5px #B6B6B6;
+	border-radius: 3px;
+	text-shadow: 1px 1px 1px #9E3F3F;
+	cursor: pointer;
+}
+button:hover{
+    background: #CF7A7A
+}
+#errorSpan {
+  visibility: hidden;
+  color: red;
+  padding-left: 50%;
+  display: inline-block;
+
+}
+@media all and (max-width: 530px) {
+  #errorSpan {
+    color: red;
+    padding-left: 5%;
+  }
+
+  #sidebar{
+    overflow-x: hidden;
+    width: 50%;
+    border-left: 1px solid black;
+    position: absolute;
+    right:0;
+    margin-top:170%;
+    margin-bottom: 30px;
+  }
+
+  #receiptDetails {
+    visibility: hidden;
+    width: 50%;
+    border-right: 1px solid black;
+    position: absolute;
+    left:0;
+    margin-top:170%;
+    overflow: hidden;
+
+  }
+  body{
+    overflow: auto;
+  }
+
+}
+#inputCCode {
+  width: 30%
+}
+
+.ConfirmForm{
+  margin-left: 30%;
+}
+#AddReceipt{
+  padding-left: 5%;
+  padding-right: 60%;
+}
+#sidebar{
+  width: 20%;
+  border-left: 1px solid black;
+  position: absolute;
+  right:0;
+  top:72px;
+  height:100%;
+  overflow: auto;
+}
+#receiptDetails {
+  visibility: hidden;
+  width: 35%;
+  border-left: 1px solid black;
+  position: absolute;
+  right:20%;
+  top:72px;
+  height:100%;
+  overflow: auto;
+}
+#ClosedDescription{
+  margin-left: 40%;
+}
+
+#imgContainer > img{
+  max-width: 100%;
+  height: auto;
+}
+#imgContainer {
+    width: 50%;
+    min-height: 120px;
+    max-height: auto;
+
+    padding-left:27%;
+}
+.mainHeader {
+  text-align: center;
+}
+#mainMiddle{
+  text-align: center;
+  margin-top: 25%;
+  width: 30%;
+  margin-left:39%;
+  display:flex;
+  color:white;
+}
+.mainPageBackground {
+  background-image: url(https://images.freecreatives.com/wp-content/uploads/2015/03/Huge-Backgrounds-17.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  height:100vh;
+}
+#descriptionContainer{
+flex:0.75;
+}
+#descriptionContainer > p{
+text-align: left;
+}
+#imgLogoContainer{
+  flex:0.25;
+  width: 10%;
+  min-height: 70px;
+  max-height: auto;
+
+}
+#imgLogoContainer > img{
+  max-width: 100%;
+  padding-top: 48%;
+
+}
+#allReceipts{
+  line-height: 1.5em;
+  list-style-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4621/treehouse-marker.png);
+  padding-bottom: 30px;
+}
+#allReceipts > li:hover {
+  color: #E27575;
+  cursor: crosshair;
+
+}
+#getStartedButt > a{
+  text-decoration: none;
+  color:white;
+}
+#sort{
+  flex:0.25;
+}
+#checkBoxContainer {
+  display: flex;
+}
+#expInfo{
+  float:right;
+  padding-right: 5px;
+}
