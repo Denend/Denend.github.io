@@ -113,7 +113,7 @@ class CreateUser extends Component{
   }
   CCRender=()=>{
     if(this.state.signUpDone){
-      return <ConfirmUs emailForCCode = {this.state.email}/>
+      return <ConfirmUs history = {this.props.history} emailForCCode = {this.state.email}/>
     }
   }
 

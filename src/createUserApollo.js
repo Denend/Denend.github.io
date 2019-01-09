@@ -18,7 +18,7 @@ class CreateUserApollo extends Component {
       <ApolloProvider client = {client}>
         <div className="App">
           <MyNav/>
-          <h2>Ez new PC</h2>
+          <h2>Registration form</h2>
           <br/>
           <CreateUser history = {this.props.history}/>
         </div>
