@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {graphql} from 'react-apollo';
 import './App.css';
 import {submitCCodeMutation} from './queries/queries';
-class ConfirmUs extends Component {
+class ConfirmationPopUp extends Component {
   constructor(props){
     super(props);
     this.state={
@@ -22,7 +22,7 @@ class ConfirmUs extends Component {
   sendCode=(e)=>{
     this.setState({error:false})
     e.preventDefault();
-    if(this.validateCode()===true){
+    if(this.validateCode()){
       this.props.submitMutation({
         variables: {
           email: this.props.emailForCCode,
@@ -55,4 +55,4 @@ class ConfirmUs extends Component {
 
   }
 }
-export default graphql (submitCCodeMutation,{name:'submitMutation'})(ConfirmUs);
+export default graphql (submitCCodeMutation,{name:'submitMutation'})(ConfirmationPopUp);

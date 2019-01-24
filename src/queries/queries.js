@@ -59,6 +59,30 @@ const showAllReceipts = gql`
     }
   }
 `
+const deleteThisReceipt = gql`
+  mutation($uuid:UUID!){
+    removeReceipt(
+      uuid:$uuid
+    ){
+      uuid
+    }
+  }
+`
+const editReceiptMutation = gql`
 
+    mutation($date:Date!,$description:String,$uuid:UUID!,$item_name:String!,$cost:Int!) {
+      updateReceipt(
+        date:$date,
+        description:$description,
+        uuid:$uuid
+        itemName: $item_name,
+        price: $cost,
 
-export {signUpUs,loginUs,addReceiptMutation,submitCCodeMutation,showAllReceipts};
+      ){
+        uuid
+        date
+      }
+    }
+`
+
+export {signUpUs,loginUs,addReceiptMutation,submitCCodeMutation,showAllReceipts,deleteThisReceipt,editReceiptMutation};

@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {graphql} from 'react-apollo';
 import './App.css';
 import {signUpUs} from "./queries/queries";
-import ConfirmUs from './confirmUser';
+import ConfirmationPopUp from './ConfirmationPopUp';
 
-class CreateUser extends Component{
+class SignUpForm extends Component{
   constructor(props){
     super(props);
     this.state = {
@@ -38,7 +38,6 @@ class CreateUser extends Component{
       inputMail.style.borderColor = "red";
       errorSpan.innerHTML = "Email is incorrect"
     } else{
-
         inputMail.style.borderColor = "#5ED50F";
         return true;
       }
@@ -46,7 +45,7 @@ class CreateUser extends Component{
   validateFname=(e)=>{
     let inputFname = document.getElementById("inputF");
     let errorSpan = document.getElementById("errorSpan");
-    if(inputFname.value<2){
+    if(inputFname.value.length<2){
       errorSpan.style.visibility = 'visible';
       inputFname.style.borderColor = "red"
       errorSpan.innerHTML = "Family name has to posess 2 or more symbols"
@@ -69,7 +68,7 @@ class CreateUser extends Component{
       return true
     }
   }
-  validatePass1=(e)=>{
+  arePassesMatch=(e)=>{
     let inputPass = document.getElementById("inputPass");
     let inputPass1 = document.getElementById("inputPass1");
     let errorSpan = document.getElementById("errorSpan");
@@ -84,53 +83,62 @@ class CreateUser extends Component{
       return true
     }
   }
+
+  isValidForm = () => {
+    return this.validateName()
+      && this.validateMail()
+      && this.validateFname()
+      && this.validatePass()
+      && this.arePassesMatch()
+  }
+
   sendRegistration = (e) => {
     let errorSpan = document.getElementById("errorSpan")
-    errorSpan.style.visibility="hidden";
+    errorSpan.style.visibility = "hidden";
     e.preventDefault();
-    if(this.validateName()===true&&this.validateMail()===true&&this.validateFname()===true&&this.validatePass()===true&&this.validatePass1()===true){
-      this.props.createDamnUser({
+    if (this.isValidForm()) {
+      this.props.createNewUser({
         variables: {
           email: this.state.email,
           familyName: this.state.familyName,
-          name:this.state.name,
-          password:this.state.password,
+          name: this.state.name,
+          password: this.state.password,
         },
-      }).catch(err=>
+      }).catch(err =>
           {
             alert(err)
             this.setState({error:true})
           }).then(
-            response=> {
-                if(!this.state.error){
-                  console.log(response.data.CreateUser.uuid)
+            response => {
+                if (!this.state.error) {
+                  //console.log(response.data.CreateUser.uuid)
                   this.setState({signUpDone:true})
                 }
             },
           );
-      console.log(this.props);
+      //console.log(this.props);
     }
   }
-  CCRender=()=>{
-    if(this.state.signUpDone){
-      return <ConfirmUs history = {this.props.history} emailForCCode = {this.state.email}/>
+  CCRender= () => {
+    if (this.state.signUpDone) {
+      return <ConfirmationPopUp history = {this.props.history} emailForCCode = {this.state.email}/>
     }
   }
 
-  render(){
+  render() {
     return(
       <div>
         <form className='SignUpForm' onSubmit= {this.sendRegistration}>
           <div>
-            <input id="inputN"placeholder = "Enter your name" type='text' onChange = {(e) => this.setState({name: e.target.value})} onMouseOut = {this.validateName}></input>
+            <input id="inputN"placeholder = "Enter your name" type='text' onChange = {(e) => this.setState({name: e.target.value})} onMouseOut = {this.validateName} />
             <br/>
-            <input id="inputF"placeholder = "Enter your family name"type='text' onChange = {(e) => this.setState({familyName: e.target.value})} onMouseOut = {this.validateFname}></input>
+            <input id="inputF"placeholder = "Enter your family name"type='text' onChange = {(e) => this.setState({familyName: e.target.value})} onMouseOut = {this.validateFname} />
             <br/>
-            <input id="inputEmail"placeholder = "Enter your email"type='email' onChange = {(e) => this.setState({email: e.target.value})} onMouseOut = {this.validateMail}></input>
+            <input id="inputEmail"placeholder = "Enter your email"type='email' onChange = {(e) => this.setState({email: e.target.value})} onMouseOut = {this.validateMail} />
             <br/>
-            <input id="inputPass"placeholder = "Enter your password"type='password' onChange = {(e) => this.setState({password: e.target.value})} onMouseOut = {this.validatePass}></input>
+            <input id="inputPass"placeholder = "Enter your password"type='password' onChange = {(e) => this.setState({password: e.target.value})} onMouseOut = {this.validatePass} />
             <br/>
-            <input id="inputPass1"placeholder = "Confirm your password"type='password' onChange = {(e) => this.setState({itemName: e.target.value})} onMouseOut = {this.validatePass1}></input>
+            <input id="inputPass1"placeholder = "Confirm your password"type='password' onChange = {(e) => this.setState({itemName: e.target.value})} onMouseOut = {this.arePassesMatch} />
             <br/>
             <button id='submitSignForm' >Submit</button><p>Already have an account?</p><a href="/Login">Login</a>  <span id='errorSpan'>Something is wrong</span>
           <br/>
@@ -141,4 +149,4 @@ class CreateUser extends Component{
     )
   }
 }
-export default graphql (signUpUs, {name: "createDamnUser"})(CreateUser);
+export default graphql (signUpUs, {name: "createNewUser"})(SignUpForm);

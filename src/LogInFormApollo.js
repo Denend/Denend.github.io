@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
-import MyNav from './navbar';
+import NavbarComp from './NavbarComp';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
-import LoginUser from './loginUserComp';
-
+import LogInForm from './LogInForm';
 
 
 const client = new ApolloClient({
   uri: "https://whopping-parched-xoloitzcuintli.gigalixirapp.com/"
 });
-class LoginApollo extends Component {
+class LogInFormApollo extends Component {
   render(){
     return(
       <ApolloProvider client ={client}>
         <div>
-          <MyNav/>
-          <LoginUser history={this.props.history} />
+          <NavbarComp/>
+          <LogInForm history={this.props.history} />
         </div>
       </ApolloProvider>
     )
   }
 }
-export default LoginApollo;
+export default LogInFormApollo;

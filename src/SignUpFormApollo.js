@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import MyNav from './navbar';
-import CreateUser from './createUser';
+import NavbarComp from './NavbarComp';
+import SignUpForm from './SignUpForm';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 
@@ -10,21 +10,21 @@ import { ApolloProvider } from 'react-apollo';
 const client = new ApolloClient({
   uri: "https://whopping-parched-xoloitzcuintli.gigalixirapp.com/"
 });
-class CreateUserApollo extends Component {
+class SignUpFormApollo extends Component {
 
 
   render() {
     return (
       <ApolloProvider client = {client}>
         <div className="App">
-          <MyNav/>
+          <NavbarComp/>
           <h2>Registration form</h2>
           <br/>
-          <CreateUser history = {this.props.history}/>
+          <SignUpForm history = {this.props.history}/>
         </div>
       </ApolloProvider>
     );
   }
 }
 
-export default CreateUserApollo;
+export default SignUpFormApollo;

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import "./App.css";
 
-class MyNav extends Component{
+class NavbarComp extends Component{
   render(){
     return(
         <nav >
@@ -18,4 +18,4 @@ class MyNav extends Component{
   }
 }
 
-export default MyNav;
+export default NavbarComp;

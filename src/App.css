@@ -30,10 +30,11 @@ nav h2 {
   flex-wrap: nowrap;
 }
 .navBar li{
-
 width:100%;
-
 }
+/* .navBar li:hover{
+border-bottom: 5px solid red;
+} */
 @media all and (max-width: 500px) {
   nav {
     flex-direction: column;
@@ -45,12 +46,6 @@ width:100%;
     flex-direction: column;
   }
 
-  #receiptDetails{
-    flex:0.5;
-    min-height: 100%;
-    height: auto;
-    height: 100%;
-  }
   #sidebar {
     flex:0.5;
     min-height: 100%;
@@ -137,7 +132,7 @@ button:hover{
 
   #sidebar{
     overflow: hidden;
-    width: 60%;
+    width: 100%;
     border-left: 1px solid black;
     position: absolute;
     right:0;
@@ -147,18 +142,36 @@ button:hover{
 
   #receiptDetails {
     visibility: hidden;
-    width: 60%%;
+    width: 60%;
     border-right: 1px solid black;
     position: absolute;
     left:0;
     margin-top:200%;
-    overflow: hidden;
-
   }
+  #editReceiptComp{
+    width: 60%;
+    border-right: 1px solid black;
+    position: absolute;
+    left:0;
+    margin-top:200%;
+  }
+  #detailsButtons{
+    flex-direction: column;
+  }
+  #receiptDetails{
+    flex:0.5;
+    min-height: 100%;
+    height: auto;
+    height: 100%;
+  }
+  #EditReceiptButton{
+    flex:0,5;
+    margin-left: 0%;
+  }
+
   body{
     overflow: auto;
   }
-
 }
 #inputCCode {
   width: 30%
@@ -181,6 +194,8 @@ button:hover{
   overflow: auto;
 }
 #receiptDetails {
+  padding-left: 2%;
+  padding-top:2%;
   visibility: hidden;
   width: 35%;
   border-left: 1px solid black;
@@ -190,19 +205,40 @@ button:hover{
   height:100%;
   overflow: auto;
 }
-#ClosedDescription{
-  margin-left: 40%;
+
+#editReceiptComp {
+  padding-left: 2%;
+  padding-top:2%;
+  padding-right:2%;
+  width: 35%;
+  border-left: 1px solid black;
+  position: absolute;
+  right:20%;
+  top:72px;
+  height:100%;
+  overflow: auto;
 }
+
+#detailsButtons{
+  display: flex;
+}
+#ClosedDescription{
+  flex:0,5;
+}
+#EditReceiptButton{
+  flex:0,5;
+  margin-left: 360%;
+}
+
 
 #imgContainer > img{
   max-width: 100%;
   height: auto;
 }
 #imgContainer {
-    width: 50%;
-    min-height: 120px;
+    width: 40%;
+    min-height: 110px;
     max-height: auto;
-
     padding-left:27%;
 }
 .mainHeader {
@@ -265,4 +301,20 @@ text-align: left;
 #expInfo{
   float:right;
   padding-right: 5px;
+}
+#deleteImgContainer{
+  width: 15%;
+  min-height: 30px;
+  max-height: auto;
+
+}
+#deleteImgContainer > img{
+max-width: 100%;
+}
+#deleteReceiptDesc {
+  display: inline-block;
+}
+#EderrorSpan {
+  color:red;
+  visibility: hidden;
 }

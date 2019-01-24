@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {graphql} from 'react-apollo';
 import {addReceiptMutation} from './queries/queries';
-import SideBar from './allReceiptsSidebar';
+import AllReceiptsSidebar from './AllReceiptsSidebar';
 
 
 
 
-class CreateR extends Component {
+class ReceiptCreationForm extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -14,14 +14,10 @@ class CreateR extends Component {
       price: "",
       description: "",
       imageUrl: "",
-
+      submitReceiptDone:0,
 
     };
   };
-
-
-
-
   validateIname=(e)=>{
     let inputName = document.getElementById("INamefield");
     let errorSpan = document.getElementById("errorSpan");
@@ -73,7 +69,7 @@ class CreateR extends Component {
     const today = new Date();
     const myDate = today.toISOString().substring(0, 10);
     e.preventDefault();
-    if(this.validateIname()===true&&this.validateIprice()===true&&this.validateUrl()===true){
+    if(this.validateIname() && this.validateIprice() && this.validateUrl()){
       this.props.createReceipt({
         variables: {
           date:myDate,
@@ -81,22 +77,18 @@ class CreateR extends Component {
           imageUrl: this.state.imageUrl,
           item_name: this.state.itemName,
           cost: parseInt(this.state.price),
-          submitReceiptDone: false,
         }
-      }).catch(err=>{
+      }).catch(err => {
           alert(err);
-      }).then(res=> {
-          console.log(res);
-          this.setState({submitReceiptDone:true})
+      }).then(res => {
+          //console.log(this.props);
+          this.setState({submitReceiptDone:!this.state.submitReceiptDone})
+          //console.log(this.props);
           window.location.reload()
          }
-    )
-      console.log(this.props);
-    }
+    )}
   }
-
-
-  render(){
+  render() {
     return(
       <div>
         <h2>Create your receipt</h2>
@@ -121,9 +113,9 @@ class CreateR extends Component {
           <br/>
           <button>Add a receipt</button>
         </form>
-        <SideBar history={this.props.history} ref="SideComp"/>
+        <AllReceiptsSidebar noReload = {this.state.submitReceiptDone} history={this.props.history} ref="SideComp"/>
       </div>
     )
   }
 }
-export default graphql (addReceiptMutation, {name:"createReceipt"})(CreateR);
+export default graphql (addReceiptMutation, {name:"createReceipt"})(ReceiptCreationForm);

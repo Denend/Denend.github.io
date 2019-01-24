@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
-import MyNav from './navbar'
+import NavbarComp from './NavbarComp'
 import ApolloClient from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
-import CreateR from './addReceipt';
+import ReceiptCreationForm from './ReceiptCreationForm';
 import {createHttpLink} from 'apollo-link-http';
 import {setContext} from 'apollo-link-context';
 import {InMemoryCache} from 'apollo-cache-inmemory';
@@ -28,14 +28,14 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
-class ApolloT extends Component {
+class ReceiptsApollo extends Component {
   render(){
     return(
       <ApolloProvider client = {client}>
         <div>
-          <MyNav/>
+          <NavbarComp/>
           <br/>
-          <CreateR history={this.props.history}/>
+          <ReceiptCreationForm history={this.props.history}/>
         </div>
       </ApolloProvider>
       );
@@ -43,4 +43,4 @@ class ApolloT extends Component {
 }
 
 
-export default ApolloT;
+export default ReceiptsApollo;

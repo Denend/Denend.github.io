@@ -5,7 +5,7 @@ import {loginUs} from './queries/queries';
 
 
 
-class LoginUser extends Component{
+class LogInForm extends Component{
 
   constructor(props){
     super(props);
@@ -33,19 +33,19 @@ class LoginUser extends Component{
   validatePass=(e)=>{
     let inputPass = document.getElementById("inputPass");
     let errorSpan = document.getElementById("errorSpan");
-    if(inputPass.value.length<6){
+    if (inputPass.value.length < 6) {
       errorSpan.style.visibility = "visible";
       inputPass.style.borderColor = "red"
       errorSpan.innerHTML = "Password has to posess 6 or more symbols";
-    } else{
+    } else {
       inputPass.style.borderColor = "#5ED50F";
       return true
     }
   }
-  sendLogin=(e)=>{
+  sendLogin = (e) => {
     let errorSpan = document.getElementById("errorSpan");
     e.preventDefault()
-    if(this.validateMail()===true&&this.validatePass()===true){
+    if(this.validateMail() && this.validatePass()){
 
       this.setState({error:false})
       this.props.loginDamnUser({
@@ -53,30 +53,28 @@ class LoginUser extends Component{
           email: this.state.email,
           password: this.state.password
         }
-      }).catch(err=>{
+      }).catch(err => {
           alert(err)
           this.setState({error:true})
           errorSpan.innerHTML = "Login or password is incorrect"
-         }).then(res=>{
-            console.log(res)
-            if(!this.state.error&&res.data){
-              console.log(res.data)
-              localStorage.setItem('my-jwt',res.data.loginUser.accessToken)
+         }).then(res => {
+            //console.log(res.data.loginUser.accessToken)
+            if(!this.state.error && res.data){
+              //console.log(res.data)
+              localStorage.setItem('my-jwt', res.data.loginUser.accessToken)
               this.props.history.push('/MyReceipts')
             }
           }
       );
     }
   }
-
-
-  render(){
+  render() {
     return(
       <div>
         <br/>
         <form className='SignUpForm' onSubmit= {this.sendLogin}>
           <div>
-            <input id="inputEmail"placeholder = "Enter your email"type='email' onChange = {(e) => this.setState({email: e.target.value})} onMouseOut = {this.validatePass}></input>
+            <input id="inputEmail" placeholder = "Enter your email" type='email' onChange = {(e) => this.setState({email: e.target.value})} onMouseOut = {this.validatePass}></input>
             <br/>
             <input id="inputPass"placeholder = "Enter your password"type='password' onChange = {(e) => this.setState({password: e.target.value})} onMouseOut = {this.validateMail}></input>
             <br/>
@@ -87,4 +85,4 @@ class LoginUser extends Component{
     )
   }
 }
-export default  graphql (loginUs, {name: 'loginDamnUser'})(LoginUser);
+export default  graphql (loginUs, {name: 'loginDamnUser'})(LogInForm);
