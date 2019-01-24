@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 import {graphql} from 'react-apollo';
 import {addReceiptMutation} from './queries/queries';
-import AllReceiptsSidebar from './AllReceiptsSidebar';
-
-
-
+import ReceiptsSidebar from './ReceiptsSidebar';
 
 class ReceiptCreationForm extends Component {
   constructor(props){
@@ -113,7 +110,7 @@ class ReceiptCreationForm extends Component {
           <br/>
           <button>Add a receipt</button>
         </form>
-        <AllReceiptsSidebar noReload = {this.state.submitReceiptDone} history={this.props.history} ref="SideComp"/>
+        <ReceiptsSidebar noReload = {this.state.submitReceiptDone} history={this.props.history} ref="SideComp"/>
       </div>
     )
   }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import NavbarComp from './NavbarComp';
-class MainPage extends Component {
+class CompMainPage extends Component {
   render(){
     return(
       <div className="mainPageBackground">
@@ -28,4 +28,4 @@ class MainPage extends Component {
 
   }
 }
-export default MainPage;
+export default CompMainPage;

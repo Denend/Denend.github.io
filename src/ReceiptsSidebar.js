@@ -5,7 +5,7 @@ import {deleteThisReceipt} from './queries/queries'
 import ReceiptDetailsBar from './ReceiptDetailsBar';
 import EditReceiptForm from './EditReceiptForm'
 
-class AllReceiptsSidebar extends Component {
+class ReceiptsSidebar extends Component {
 
   showAllTitles=()=>{
     console.log(this.props)
@@ -80,4 +80,4 @@ class AllReceiptsSidebar extends Component {
 export default compose (
   graphql(showAllReceipts, {name: "showReceipts"}),
   graphql(deleteThisReceipt, {name:"removeReceipt"})
-)(AllReceiptsSidebar);
+)(ReceiptsSidebar);
