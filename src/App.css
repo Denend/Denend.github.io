@@ -1,10 +1,6 @@
-html {
 
-}
 body,h1,h2 {
-
    overflow: hidden;
-
 }
 nav {
    display: flex;
@@ -15,7 +11,6 @@ nav h2 {
   flex: 0.5;
   color: white;
   text-align: center;
-
 }
 .navBar {
   flex:0.5;
@@ -23,8 +18,6 @@ nav h2 {
   margin: 0;
   padding: 0;
   overflow: hidden;
-
-
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -32,9 +25,7 @@ nav h2 {
 .navBar li{
 width:100%;
 }
-/* .navBar li:hover{
-border-bottom: 5px solid red;
-} */
+
 @media all and (max-width: 500px) {
   nav {
     flex-direction: column;
@@ -45,7 +36,6 @@ border-bottom: 5px solid red;
   .navBar {
     flex-direction: column;
   }
-
   #sidebar {
     flex:0.5;
     min-height: 100%;
@@ -65,7 +55,6 @@ border-bottom: 5px solid red;
     position: absolute;
     right:-40px;
   }
-
 }
 
 li a {
@@ -171,6 +160,9 @@ button:hover{
 
   body{
     overflow: auto;
+  }
+  #errorAlert{
+    	width: 70%;
   }
 }
 #inputCCode {
@@ -317,4 +309,33 @@ max-width: 100%;
 #EderrorSpan {
   color:red;
   visibility: hidden;
+}
+#errorAlert{
+  position: absolute;
+  	top: 70%;
+  	left: 60%;
+  	width: 30%;
+  	height: auto;
+  	margin-top: -18%;
+  	margin-left: -25%;
+  	padding: 30px;
+  	background-color: #001f3f;
+    color:#7FDBFF;
+  	border-radius: 4px;
+  	box-shadow: 0 0 50px rgba(black,0.5);
+  	z-index: 20;
+}
+.close-modal {
+  text-align: right;
+  cursor: pointer;
+}
+#alertErrorTopHeader{
+  font-weight: bold;
+  font-size: xx-large;
+}
+#CreateReceiptHeader{
+  margin-left: 17%;
+}
+#YourReceiptsHeader{
+  margin-left: 25%;
 }

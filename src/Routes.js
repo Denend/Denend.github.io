@@ -9,10 +9,10 @@ class Routes extends Component {
     return(
       <BrowserRouter >
         <Switch>
-          <Route path="/" exact component={CompMainPage}/>
-          <Route path="/Signup" exact component={SignUpFormApollo}/>
-          <Route path="/MyReceipts" exact component={ReceiptsApollo}/>
-          <Route path="/Login" exact component={LogInFormApollo}/>
+          <Route path = "/" exact component={CompMainPage}/>
+          <Route path = "/Signup" exact component={SignUpFormApollo}/>
+          <Route path = "/MyReceipts" exact component={ReceiptsApollo}/>
+          <Route path = "/Login" exact component={LogInFormApollo}/>
         </Switch>
       </BrowserRouter>
     );

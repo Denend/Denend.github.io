@@ -3,24 +3,26 @@ import {graphql} from 'react-apollo';
 import './App.css';
 import {signUpUs} from "./queries/queries";
 import ConfirmationPopUp from './ConfirmationPopUp';
+import ErrorPopUp from './ErrorPopUp';
 
 class SignUpForm extends Component{
   constructor(props){
     super(props);
+    this.child = React.createRef()
     this.state = {
-      email:"",
-      familyName:"",
-      name:"",
-      password:"",
+      email: "",
+      familyName: "",
+      name: "",
+      password: "",
       signUpDone: false,
-      error:false,
+      error: false,
     };
   };
 
-  validateName=(e)=>{
+  validateName = (e) => {
     let errorSpan = document.getElementById("errorSpan");
     let inputName = document.getElementById("inputN");
-    if(inputName.value<2){
+    if(inputName.value < 2){
       errorSpan.style.visibility = 'visible';
       inputName.style.borderColor = "red"
       errorSpan.innerHTML = "Name has to posess 2 or more symbols"
@@ -29,7 +31,7 @@ class SignUpForm extends Component{
       return true;
     }
   }
-  validateMail=(e)=>{
+  validateMail = (e) => {
     let re = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
     let inputMail = document.getElementById("inputEmail");
     let errorSpan = document.getElementById("errorSpan");
@@ -42,7 +44,7 @@ class SignUpForm extends Component{
         return true;
       }
   }
-  validateFname=(e)=>{
+  validateFname = (e) => {
     let inputFname = document.getElementById("inputF");
     let errorSpan = document.getElementById("errorSpan");
     if(inputFname.value.length<2){
@@ -55,7 +57,7 @@ class SignUpForm extends Component{
     }
   }
 
-  validatePass=(e)=>{
+  validatePass = (e) => {
     let inputPass = document.getElementById("inputPass");
     let errorSpan = document.getElementById("errorSpan");
     if(inputPass.value.length<6){
@@ -68,7 +70,7 @@ class SignUpForm extends Component{
       return true
     }
   }
-  arePassesMatch=(e)=>{
+  arePassesMatch = (e) => {
     let inputPass = document.getElementById("inputPass");
     let inputPass1 = document.getElementById("inputPass1");
     let errorSpan = document.getElementById("errorSpan");
@@ -106,20 +108,18 @@ class SignUpForm extends Component{
         },
       }).catch(err =>
           {
-            alert(err)
-            this.setState({error:true})
+            this.child.current.handleOpen(err)
+            this.setState({error: true})
           }).then(
             response => {
                 if (!this.state.error) {
-                  //console.log(response.data.CreateUser.uuid)
-                  this.setState({signUpDone:true})
+                  this.setState({signUpDone: true})
                 }
             },
           );
-      //console.log(this.props);
     }
   }
-  CCRender= () => {
+  CCRender = () => {
     if (this.state.signUpDone) {
       return <ConfirmationPopUp history = {this.props.history} emailForCCode = {this.state.email}/>
     }
@@ -128,19 +128,20 @@ class SignUpForm extends Component{
   render() {
     return(
       <div>
+        <ErrorPopUp ref={this.child}/>
         <form className='SignUpForm' onSubmit= {this.sendRegistration}>
           <div>
-            <input id="inputN"placeholder = "Enter your name" type='text' onChange = {(e) => this.setState({name: e.target.value})} onMouseOut = {this.validateName} />
+            <input id = "inputN" placeholder = "Enter your name" type = 'text' onChange = {(e) => this.setState({name: e.target.value})} onMouseOut = {this.validateName} />
             <br/>
-            <input id="inputF"placeholder = "Enter your family name"type='text' onChange = {(e) => this.setState({familyName: e.target.value})} onMouseOut = {this.validateFname} />
+            <input id = "inputF" placeholder = "Enter your family name" type = 'text' onChange = {(e) => this.setState({familyName: e.target.value})} onMouseOut = {this.validateFname} />
             <br/>
-            <input id="inputEmail"placeholder = "Enter your email"type='email' onChange = {(e) => this.setState({email: e.target.value})} onMouseOut = {this.validateMail} />
+            <input id = "inputEmail" placeholder = "Enter your email" type = 'email' onChange = {(e) => this.setState({email: e.target.value})} onMouseOut = {this.validateMail} />
             <br/>
-            <input id="inputPass"placeholder = "Enter your password"type='password' onChange = {(e) => this.setState({password: e.target.value})} onMouseOut = {this.validatePass} />
+            <input id = "inputPass" placeholder = "Enter your password" type = 'password' onChange = {(e) => this.setState({password: e.target.value})} onMouseOut = {this.validatePass} />
             <br/>
-            <input id="inputPass1"placeholder = "Confirm your password"type='password' onChange = {(e) => this.setState({itemName: e.target.value})} onMouseOut = {this.arePassesMatch} />
+            <input id = "inputPass1" placeholder = "Confirm your password" type = 'password' onChange = {(e) => this.setState({itemName: e.target.value})} onMouseOut = {this.arePassesMatch} />
             <br/>
-            <button id='submitSignForm' >Submit</button><p>Already have an account?</p><a href="/Login">Login</a>  <span id='errorSpan'>Something is wrong</span>
+            <button id = 'submitSignForm'>Submit</button><p>Already have an account?</p><a href = "/Login">Login</a>  <span id = 'errorSpan'>Something is wrong</span>
           <br/>
           </div>
         </form>

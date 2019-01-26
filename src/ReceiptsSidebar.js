@@ -7,7 +7,7 @@ import EditReceiptForm from './EditReceiptForm'
 
 class ReceiptsSidebar extends Component {
 
-  showAllTitles=()=>{
+  showAllTitles = () => {
     console.log(this.props)
   }
 
@@ -21,24 +21,20 @@ class ReceiptsSidebar extends Component {
       reloadAfterAdd:this.props.noReload,
     }
   }
-  // componentDidUpdate(prevProps, prevState){
-  //   if(prevState.reloadAfterAdd!==this.state.reloadAfterAdd){
-  //     this.forceUpdate()
-  //   }
-  // }
-  sortData=(dataToSort)=>{
-    return dataToSort.sort((a,b)=>{
+
+  sortData = (dataToSort) => {
+    return dataToSort.sort((a,b) => {
       return new Date(b.date) - new Date(a.date);
     })
   };
-  displayReceipts=(e)=>{
+  displayReceipts = (e) => {
     let myData = !this.state.sortChecked?this.props.showReceipts.ListCurrentUserReceipts:this.sortData(this.props.showReceipts.ListCurrentUserReceipts);
     if(this.props.showReceipts.loading){
       return (<div>Loading receipts...</div>)
     } else if(myData){
 
-          return myData.map((e,index)=>{
-          return <li value={index} key={index} onClick = {(e)=>{this.setState({activeReceiptValue:e.target.value})}}>{e.itemName}</li>
+          return myData.map((e,index) => {
+          return <li value = {index} key = {index} onClick = {(e) => {this.setState({activeReceiptValue:e.target.value})}}> {e.itemName} </li>
         })
     } else {
         alert("You are not logged in")
@@ -46,26 +42,26 @@ class ReceiptsSidebar extends Component {
     }
   }
 
-  closeDescription=()=>{
+  closeDescription = () => {
     document.getElementById("receiptDetails").style.visibility = "hidden"
   }
-  checkSorting=(e)=>{
-    this.setState({sortChecked:e.target.checked});
-    e.target.disabled=true;
+  checkSorting = (e) => {
+    this.setState({sortChecked: e.target.checked});
+    e.target.disabled = true;
   }
-  callBackDetails=(dataFromDetails)=>{
-    this.setState({editReceiptOpen:dataFromDetails})
+  callBackDetails = (dataFromDetails) => {
+    this.setState({editReceiptOpen: dataFromDetails})
   }
 
   render(){
     return(
       <div>
-          <div id="allReceiptsComp">
+          <div id = "allReceiptsComp">
             {this.state.editReceiptOpen?<ReceiptDetailsBar callback = {this.callBackDetails} closeDescExt = {this.closeDescription} DeleteErrExtState = {this.state.deleteError} sidebarProps = {this.props}  activeLi = {this.state.activeReceiptValue} passedData = {this.props.showReceipts.ListCurrentUserReceipts}/>:<EditReceiptForm activeLi = {this.state.activeReceiptValue} passedData = {this.props.showReceipts.ListCurrentUserReceipts} callback = {this.callBackDetails}/>}
-            <div id="sidebar">
-              <h2>Your receipts:</h2>
-              <div id="checkBoxContainer">
-                <input id="sort" type="checkbox" onChange={this.checkSorting}></input><label htmlFor="sort">Sort by date</label>
+            <div id = "sidebar">
+              <h2 id = "YourReceiptsHeader">Your receipts</h2>
+              <div id = "checkBoxContainer">
+                <input id = "sort" type = "checkbox" onChange = {this.checkSorting}></input><label htmlFor="sort">Sort by date</label>
               </div>
               <ul id = "allReceipts">
                 {this.displayReceipts()};

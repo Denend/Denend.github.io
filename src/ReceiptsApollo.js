@@ -35,7 +35,7 @@ class ReceiptsApollo extends Component {
         <div>
           <NavbarComp/>
           <br/>
-          <ReceiptCreationForm history={this.props.history}/>
+          <ReceiptCreationForm history = {this.props.history}/>
         </div>
       </ApolloProvider>
       );
