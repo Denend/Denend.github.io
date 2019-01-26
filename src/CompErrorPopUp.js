@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Button, Icon, Modal } from 'semantic-ui-react'
+import { Button, Modal } from 'semantic-ui-react'
 
-export default class ErrorPopUp extends Component {
+export default class CompErrorPopUp extends Component {
   state = { modalOpen: false }
   handleOpen = (err) => {
     this.setState({ modalOpen: true })
@@ -24,7 +24,7 @@ export default class ErrorPopUp extends Component {
         <h3 id = "errHeader"> ErrorText </h3>
         <Modal.Actions>
           <Button color = 'green' onClick = {this.handleClose} inverted>
-            <Icon name = 'checkmark' /> Close
+            Close
           </Button>
         </Modal.Actions>
         </div>

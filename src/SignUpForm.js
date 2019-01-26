@@ -3,7 +3,7 @@ import {graphql} from 'react-apollo';
 import './App.css';
 import {signUpUs} from "./queries/queries";
 import ConfirmationPopUp from './ConfirmationPopUp';
-import ErrorPopUp from './ErrorPopUp';
+import CompErrorPopUp from './CompErrorPopUp';
 
 class SignUpForm extends Component{
   constructor(props){
@@ -128,7 +128,7 @@ class SignUpForm extends Component{
   render() {
     return(
       <div>
-        <ErrorPopUp ref={this.child}/>
+        <CompErrorPopUp ref={this.child}/>
         <form className='SignUpForm' onSubmit= {this.sendRegistration}>
           <div>
             <input id = "inputN" placeholder = "Enter your name" type = 'text' onChange = {(e) => this.setState({name: e.target.value})} onMouseOut = {this.validateName} />

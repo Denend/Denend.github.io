@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {graphql} from 'react-apollo';
 import {addReceiptMutation} from './queries/queries';
 import ReceiptsSidebar from './ReceiptsSidebar';
-import ErrorPopUp from './ErrorPopUp';
+import CompErrorPopUp from './CompErrorPopUp';
 
 class ReceiptCreationForm extends Component {
   constructor(props){
@@ -87,7 +87,7 @@ class ReceiptCreationForm extends Component {
   render() {
     return(
       <div>
-        <ErrorPopUp ref={this.child}/>
+        <CompErrorPopUp ref={this.child}/>
         <h2 id = "CreateReceiptHeader">Create your receipt</h2>
         <form id = "AddReceipt" onSubmit = {this.submitReceiptForm}>
           <div>

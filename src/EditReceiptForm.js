@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {graphql} from 'react-apollo';
 import {editReceiptMutation} from './queries/queries';
-import ErrorPopUp from './ErrorPopUp';
+import CompErrorPopUp from './CompErrorPopUp';
 
 
 class EditReceiptForm extends Component{
@@ -85,7 +85,7 @@ class EditReceiptForm extends Component{
   render(){
     return(
       <div>
-        <ErrorPopUp ref={this.child}/>
+        <CompErrorPopUp ref={this.child}/>
         <div id = "editReceiptComp">
           <button onClick = {(e) => {this.changeBar()}}>Back</button>
           <form id = "EditReceipt" onSubmit = {this.submitEditForm}>

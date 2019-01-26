@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {graphql} from 'react-apollo';
 import './App.css';
 import {submitCCodeMutation} from './queries/queries';
-import ErrorPopUp from './ErrorPopUp';
+import CompErrorPopUp from './CompErrorPopUp';
 
 class ConfirmationPopUp extends Component {
   constructor(props){
@@ -44,7 +44,7 @@ class ConfirmationPopUp extends Component {
   render(){
     return(
       <div>
-        <ErrorPopUp ref = {this.child}/>
+        <CompErrorPopUp ref = {this.child}/>
         <form className = 'ConfirmForm' onSubmit = {this.sendCode}>
           <div>
             <span>Massage with a confirmation code was sent to your e-mail</span>

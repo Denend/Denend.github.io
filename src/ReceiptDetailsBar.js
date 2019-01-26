@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import ErrorPopUp from './ErrorPopUp';
+import CompErrorPopUp from './CompErrorPopUp';
 
 
 class ReceiptDetailsBar extends Component {
@@ -83,7 +83,7 @@ class ReceiptDetailsBar extends Component {
     console.log("updated")
     return(
       <div>
-        <ErrorPopUp ref = {this.child}/>
+        <CompErrorPopUp ref = {this.child}/>
         <div id = "receiptDetails">
           <h2 id = "itemName">Second div</h2>
           <div id = "expInfo">

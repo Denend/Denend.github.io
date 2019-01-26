@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {graphql} from 'react-apollo';
 import {loginUs} from './queries/queries';
-import ErrorPopUp from './ErrorPopUp';
+import CompErrorPopUp from './CompErrorPopUp';
 
 class LogInForm extends Component{
   constructor(props){
@@ -67,7 +67,7 @@ class LogInForm extends Component{
   render() {
     return(
       <div>
-        <ErrorPopUp ref = {this.child}/>
+        <CompErrorPopUp ref = {this.child}/>
         <br/>
         <form className = 'SignUpForm' onSubmit = {this.sendLogin}>
           <div>
